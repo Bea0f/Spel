@@ -139,7 +139,7 @@ section{
 
 
 .home{
-    background: url('860645.png');
+    background: url('./img/860645.png');
     background-size: cover;
     background-position: center;
     min-height: 100vh;
