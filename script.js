@@ -6,47 +6,46 @@ const result = document.querySelector(".result");
 const optionImages = document.querySelectorAll(".option_image");
 const rockSelect = document.querySelector(".rockSelect");
 const paperSelect = document.querySelector(".paperSelect");
- const scissorsSelect = document.querySelector(".scissorsSelect");
+const scissorsSelect = document.querySelector(".scissorsSelect");
 
-  let chosenLanguage = localStorage.getItem("langSelect");
-  chosenLanguage= "swe";
-  let currentLanguage = chosenLanguage;
+let chosenLanguage = localStorage.getItem("langSelect");
+chosenLanguage = "swe";
+let currentLanguage = chosenLanguage;
 
-  const changeLanguage = function changeLanguage(language){
-    switch (language) {
-      case "eng":
-        currentLanguage = "eng";
-        result.innerHTML = "Let's play!!"
-        rockSelect.innerHTML = "Rock"
-        paperSelect.innerHTML = "Paper";
-        scissorsSelect.innerHTML = "Scissor";
-        break;
-      case "swe":
-        currentLanguage = "swe";
-        result.innerHTML = "Låt oss spela!!"
-        rockSelect.innerHTML = "Sten";
-        paperSelect.innerHTML = "Påse";
-        scissorsSelect.innerHTML = "Sax";
-        break;
+const changeLanguage = function changeLanguage(language) {
+  switch (language) {
+    case "eng":
+      currentLanguage = "eng";
+      result.innerHTML = "Let's play!!";
+      rockSelect.innerHTML = "Rock";
+      paperSelect.innerHTML = "Paper";
+      scissorsSelect.innerHTML = "Scissor";
+      break;
+    case "swe":
+      currentLanguage = "swe";
+      result.innerHTML = "Låt oss spela!!";
+      rockSelect.innerHTML = "Sten";
+      paperSelect.innerHTML = "Påse";
+      scissorsSelect.innerHTML = "Sax";
+      break;
 
-      default:
-        currentLanguage = "eng";
-        break;
-    }
+    default:
+      currentLanguage = "eng";
+      break;
   }
+};
 changeLanguage(currentLanguage);
-console.log(currentLanguage);
 
 // Loop through each option image element
 optionImages.forEach((image, index) => {
   image.addEventListener("click", (e) => {
     image.classList.add("active");
 
-
-    userResult.src = cpuResult.src = "img/rock.png";
-    if (currentLanguage=="eng") {
+    userResult.src = "img/rock.png";
+    cpuResult.src = "img/rock.png";
+    if (currentLanguage === "eng") {
       result.textContent = "Wait...";
-    }else{
+    } else {
       result.textContent = "Vänta...";
     }
     // Loop through each option image again
@@ -81,8 +80,6 @@ optionImages.forEach((image, index) => {
       // Assign a letter value to the clicked option (based on index)
       const userValue = ["R", "P", "S"][index];
 
-
-
       // Create an object with all possible outcomes
       const outcomes = {
         RR: "Draw",
@@ -100,12 +97,11 @@ optionImages.forEach((image, index) => {
       const outComeValue = outcomes[userValue + cpuValue];
 
       // Display the result
-      if (changeLanguage=="eng") {
+      if (changeLanguage === "eng") {
         result.textContent = userValue === cpuValue ? "Match Draw" : `${outComeValue} Won!!`;
-      }else{
+      } else {
         result.textContent = userValue === cpuValue ? "Det blev oavgjort" : `${outComeValue} Vann!!`;
       }
-
     }, 2500);
   });
 });
