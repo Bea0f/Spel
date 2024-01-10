@@ -1,4 +1,4 @@
-// Get  to DOM elements
+// Get  to DOM elements and make kajsa happy
 const gameContainer = document.querySelector(".container");
 const userResult = document.querySelector(".user_result img");
 const cpuResult = document.querySelector(".cpu_result img");
