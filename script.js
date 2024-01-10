@@ -4,10 +4,9 @@ const userResult = document.querySelector(".user_result img");
 const cpuResult = document.querySelector(".cpu_result img");
 const result = document.querySelector(".result");
 const optionImages = document.querySelectorAll(".option_image");
- 
-rockSelect = document.querySelector(".rockSelect"),
-  paperSelect = document.querySelector(".paperSelect"),
-  scissorsSelect = document.querySelector(".scissorsSelect");
+const rockSelect = document.querySelector(".rockSelect");
+const paperSelect = document.querySelector(".paperSelect");
+ const scissorsSelect = document.querySelector(".scissorsSelect");
 
   let chosenLanguage = localStorage.getItem("langSelect");
   chosenLanguage= "swe";
