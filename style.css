@@ -41,6 +41,19 @@ body{
     gap: 25px;
 }
 
+
+.btnLanguage {
+  background-color: black;
+  border: none;
+  cursor: pointer;
+}
+
+.flags {
+  width: 40px;
+  height: 25px;
+  margin: 10px;
+}
+
 .navicons{
     display:flex;
     list-style: none;
@@ -139,7 +152,7 @@ section{
 
 
 .home{
-    background: url('860645.png');
+    background: url('./img/860645.png');
     background-size: cover;
     background-position: center;
     min-height: 100vh;
