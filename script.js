@@ -4,16 +4,52 @@ const userResult = document.querySelector(".user_result img");
 const cpuResult = document.querySelector(".cpu_result img");
 const result = document.querySelector(".result");
 const optionImages = document.querySelectorAll(".option_image");
+ 
+rockSelect = document.querySelector(".rockSelect"),
+  paperSelect = document.querySelector(".paperSelect"),
+  scissorsSelect = document.querySelector(".scissorsSelect");
+
+  let chosenLanguage = localStorage.getItem("langSelect");
+  chosenLanguage= "swe";
+  let currentLanguage = chosenLanguage;
+
+  const changeLanguage = function changeLanguage(language){
+    switch (language) {
+      case "eng":
+        currentLanguage = "eng";
+        result.innerHTML = "Let's play!!"
+        rockSelect.innerHTML = "Rock"
+        paperSelect.innerHTML = "Paper";
+        scissorsSelect.innerHTML = "Scissor";
+        break;
+      case "swe":
+        currentLanguage = "swe";
+        result.innerHTML = "Låt oss spela!!"
+        rockSelect.innerHTML = "Sten";
+        paperSelect.innerHTML = "Påse";
+        scissorsSelect.innerHTML = "Sax";
+        break;
+
+      default:
+        currentLanguage = "eng";
+        break;
+    }
+  }
+changeLanguage(currentLanguage);
+console.log(currentLanguage);
 
 // Loop through each option image element
 optionImages.forEach((image, index) => {
   image.addEventListener("click", (e) => {
     image.classList.add("active");
 
-    userResult.src = "img/rock.png";
-    cpuResult.src = "img/rock.png";
-    result.textContent = "Wait...";
 
+    userResult.src = cpuResult.src = "img/rock.png";
+    if (currentLanguage=="eng") {
+      result.textContent = "Wait...";
+    }else{
+      result.textContent = "Vänta...";
+    }
     // Loop through each option image again
     optionImages.forEach((image2, index2) => {
       // If the current index doesn't match the clicked index
@@ -46,6 +82,8 @@ optionImages.forEach((image, index) => {
       // Assign a letter value to the clicked option (based on index)
       const userValue = ["R", "P", "S"][index];
 
+
+
       // Create an object with all possible outcomes
       const outcomes = {
         RR: "Draw",
@@ -63,7 +101,12 @@ optionImages.forEach((image, index) => {
       const outComeValue = outcomes[userValue + cpuValue];
 
       // Display the result
-      result.textContent = userValue === cpuValue ? "Match Draw" : `${outComeValue} Won!!`;
+      if (changeLanguage=="eng") {
+        result.textContent = userValue === cpuValue ? "Match Draw" : `${outComeValue} Won!!`;
+      }else{
+        result.textContent = userValue === cpuValue ? "Det blev oavgjort" : `${outComeValue} Vann!!`;
+      }
+
     }, 2500);
   });
 });
